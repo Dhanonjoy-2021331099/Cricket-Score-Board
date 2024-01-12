@@ -1,217 +1,252 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
 
-struct batsman
- {
-   char name[25];
-   int runs,score,balls,toruns,tobal,ones,twos,threes,fours,sixes;
-   int max_six,max_run,max_four;
-   float str;
+// Global Vars
+int run = 0;
+int over = 0;
+int ball = 0;
+int wicket = 0;
 
- }pl1[100],pl3;
+void printLiveScore() {
+    printf("\nLive Score:\n");
+    printf("Score: %d / %d\n", run, wicket);
+    printf("Overs: %d.%d\n", over, ball);
 
+}
 
-struct bowler
- {
-   char name[25];
-   int runsgv,wkttkn,overs;
-   int max_w;
-   float econ;
- }pl2[100],pl4;
+int main() {
+    int score, w, o;
+    printf("Enter overs and wickets: ");
+    scanf("%d%d", &o, &w);
+    printf("%d overs & %d wickets", o, w);
+    while (1) {
+       //printLiveScore();
 
+        printf("\n Show live score, '0' press again ");
+        scanf("%d", &score);
+        getchar();
+          // Consume the newline character left in the buffer
 
-int main()
-{
- int plno,choice;
-  int i,n,m;
-  printf("Enter the Batsman detail:\n");
-  printf("Enter the number of batsman:\n");
-  scanf("%d",&m);
-  for(i=0;i<m;i++)
-   {
+           srand(time(NULL));
+                int random = (rand() % 7) + 1 ;
 
-       printf("Enter name of batsman%d:\n",i+1);
-       scanf("%s",pl1[i].name);
-
-
-       printf("Enter the number of ones scored by player%d:\n ",i+1);
-       scanf("%d",&pl1[i].ones);
-
-
-       printf("Enter the number of twos scored by player%d:\n ",i+1);
-       scanf("%d",&pl1[i].twos);
-
-
-       printf("Enter the number of threes scored by player%d:\n ",i+1);
-       scanf("%d",&pl1[i].threes);
-
-
-       printf("Enter the number of fours scored by player%d:\n ",i+1);
-       scanf("%d",&pl1[i].fours);
-
-
-       printf("Enter the number of sixes scored by player%d:\n ",i+1);
-       scanf("%d",&pl1[i].sixes);
-
-
-       printf("Enter the balls played by the player%d:\n",i+1);
-       scanf("%d",&pl1[i].balls);
-   }
-
-
-
-   printf("\nEnter the bowlers details:\n");
-
-   printf("Enter the number of bowlers:\n");
-
-   scanf("%d",&n);
-
-
-   for(i=0;i<n;i++)
-   {
-
-       printf("\nEnter name of bowler%d:",i+1);
-       scanf("%s",pl2[i].name);
-
-
-       printf("Enter the runs given by the bowler%d:\n ",i+1);
-       scanf("%d",&pl2[i].runsgv);
-
-
-       printf("Enter the overs bowled by the bowler%d:\n",i+1);
-       scanf("%d",&pl2[i].overs);
-
-
-       printf("Enter the wickets taken by the bowler%d\n",i+1);
-       scanf("%d",&pl2[i].wkttkn);
-
-   }
-
-   printf("Thank you all details are recorded\n");
-
-
-   do
-    {
-
-       printf("Enter the choice:\n 1)Batsman detail:\n 2)Bowlers detail:\n 3)Match summary:\n 4)Record:\n 5)Exit\n ");
-       scanf("%d",&choice);
-
-     switch(choice)
-      {
-
-        case 1:
-              printf("Enter the batsman number to see his details\n");
-              scanf("%d",&plno);
-
-              plno--;
-              printf("                       Player Detail\n");
-              printf("===========================================================================\n");
-              printf(" Batsman        runs           balls        fours       sixes         sr   \n");
-              printf("===========================================================================\n");
-
-
-              pl1[plno].runs=(1*pl1[plno].ones)+(2*pl1[plno].twos)+(3*pl1[plno].threes)+(4*pl1[plno].fours)+(6*pl1[plno].sixes);
-              pl1[plno].str=(pl1[plno].runs*100.00)/pl1[plno].balls;
-              printf(" %-15s %-14d %-13d %-11d %-11d %-9.2f\n\n",pl1[plno].name,pl1[plno].runs,pl1[plno].balls,pl1[plno].fours,pl1[plno].sixes,pl1[plno].str);
-
-              break;
-
-
-        case 2:
-             printf("Enter the bowlers number to see his details\n");
-             scanf("%d",&plno);
-
-             plno--;
-              printf("                         Player Detail\n  ");
-              printf("=================================================================\n");
-              printf(" Bowler        overs           runs        wicket       economy\n");
-              printf("=================================================================\n");
-
-               for(i=0;i<n;i++)
-               {   pl2[plno].econ=pl2[plno].runsgv/pl2[plno].overs;
-                   printf(" %-15s %-14d %-13d %-11d %-11.2f\n\n",pl2[plno].name,pl2[plno].overs,pl2[plno].runsgv,pl2[plno].wkttkn,pl2[plno].econ);
-               }
-
-             break;
-
-        case 3:
-              printf("                     Match summary\n");
-              printf("==========================================================================\n");
-              printf(" Batsman        runs           balls        fours       sixes         sr   \n");
-              printf("==========================================================================\n");
-
-              for(i=0;i<1;i++)
-                {
-                    pl1[i].runs=(1*pl1[i].ones)+(2*pl1[i].twos)+(3*pl1[i].threes)+(4*pl1[i].fours)+(6*pl1[i].sixes);
-                    pl3.toruns+=pl1[i].runs;
-                    pl1[i].str=(pl1[i].runs*100.00)/pl1[i].balls;
-                    printf(" %-15s %-14d %-13d %-11d %-11d %-9.2f\n\n",pl1[i].name,pl1[i].runs,pl1[i].balls,pl1[i].fours,pl1[i].sixes,pl1[i].str);
+        switch (random) {
+            case 0: {
+                 srand(time(NULL));
+                int random = (rand() % 2) ;
+                switch (random) {
+                    case 0: {
+                        wicket += 1;
+                        ball += 1;
+                        printf("\nWe have a wicket\n");
+                        break;
+                    }
+                    case 1: {
+                        ball += 1;
+                        printf("\nDot ball\n");
+                        break;
+                    }
                 }
-                printf("TOTAL RUNS:%d\n\n",pl3.toruns);
-              printf("\n\n");
-              printf("=================================================================\n");
-              printf(" Bowler        overs           runs        wicket       economy\n");
-              printf("=================================================================\n");
+                break;
+            }
 
-               for(i=0;i<n;i++)
-               {   pl2[i].econ=pl2[i].runsgv/pl2[i].overs;
-                   printf(" %-15s %-14d %-13d %-11d %-11.2f\n\n\n",pl2[i].name,pl2[i].overs,pl2[i].runsgv,pl2[i].wkttkn,pl2[i].econ);
-               }
+            case 1: {
+                srand(time(NULL));
+                int random = (rand() % 4);
+                switch (random) {
+                    case 0: {
+                        run += 1;
+                        ball += 1;
+                        printf("\nSingle run\n");
+                        break;
+                    }
+                    case 1: {
+                        run += 1;
+                        printf("\nWide ball\n");
+                        break;
+                    }
+                    case 2: {
+                        run += 1;
+                        printf("\nNo ball, Free hit\n");
+                        break;
+                    }
+                    case 3: {
+                        run += 1;
+                        ball += 1;
+                        wicket += 1;
+                        printf("\nWicket gone and Single run.\n");
+                        break;
+                    }
+                    default:
+                        printf("\nDad Ball\n");
+                }
+                break;
+            }
+            case 2: {
+                srand(time(NULL));
+                int random = (rand() % 5);
+                switch (random) {
+                    case 0: {
+                        run += 2;
+                        ball += 1;
+                        printf("\nDouble run.\n");
+                        break;
+                    }
+                    case 1: {
+                        run += 2;
+                        printf("\nWide ball and single run.\n");
+                        break;
+                    }
+                    case 2: {
+                        run += 2;
+                        printf("\nNo ball, Free hit and single run.\n");
+                        break;
+                    }
+                    case 3: {
+                        run += 2;
+                        ball += 1;
+                        wicket += 1;
+                        printf("\nWicket gone and double run.\n");
+                        break;
+                    }
+                    default:
+                        printf("\nDad Ball\n");
+                }
+                break;
+            }
+          case 3 : {
+                srand(time(NULL));
+                int random = (rand() % 4);
 
+                switch(random){
+                case 0 : {
+                run +=3;
+                ball +=1;
+                printf("\n Triple run. \n");
+                break;
+                }
+                case 1 : {
+                run +=3;
+                printf("\nWide ball and double run. \n");
+                break;
+                }
+                case 2 : {
+                run +=3;
+                //ball -=1;
+                printf("\nNo ball, Free hit and double run.\n");
+                break;
+                }
+                case 3 : {
+                run +=3;
+                ball +=1;
+                wicket +=1;
+                printf("\nWicket gone and triple run.\n");
+                break;
+                }
+                default :
+                    printf("\nDad Ball\n");
+                }
+                break;
+            }
+            case 4: {
+                srand(time(NULL));
+                int random = (rand() % 1);
+                switch (random) {
+                    case 0: {
+                        run += 4;
+                        ball += 1;
+                        printf("\nIt is a four'\n");
+                        break;
+                    }
+                    default:
+                        printf("\nDad Ball\n");
+                }
+                break;
+            }
+            case 5: {
 
-               break;
+                srand(time(NULL));
+                int random = (rand() % 2);
+                switch (random) {
+                    case 0: {
+                        run += 5;
+                        printf("\nWide ball and four.\n");
+                        break;
+                    }
+                    case 1: {
+                        run += 5;
+                        printf("\nNo ball, Free hit and four.\n");
+                        break;
+                    }
+                    default:
+                        printf("\nDad Ball\n");
+                }
+                break;
+            }
+            case 6: {
 
-        case 4: pl3.max_run=0,pl4.max_w=0,pl3.max_four=0,pl3.max_six=0;
+                srand(time(NULL));
+                int random = (rand() % 1);
+                switch (random) {
+                    case 0: {
+                        run += 6;
+                        ball += 1;
+                        printf("\nIt is a Six\n");
+                        break;
+                    }
+                    default:
+                        printf("\nDad Ball\n");
+                }
+                break;
+            }
+            case 7: {
 
-                for(i=0;i<m;i++)
-                  {
-                     pl1[i].runs=(1*pl1[i].ones)+(2*pl1[i].twos)+(3*pl1[i].threes)+(4*pl1[i].fours)+(6*pl1[i].sixes);
-                     if(pl3.max_run<pl1[i].runs)
-                        {
-                          pl3.max_run=pl1[i].runs;
+                srand(time(NULL));
+                int random = (rand() % 1);
+                switch (random) {
+                    case 0: {
+                        run += 7;
+                        printf("\nNo ball, Free hit and six.\n");
+                        break;
+                    }
+                    default:
+                        printf("\nDad Ball\n");
+                }
+                break;
+            }
+            case 400: {
+                exit(1);
+                // Exit code
+                break;
+            }
+            default: {
+                printf("\nThis is an invalid input\n");
+            }
+        }
 
-                        }
+        if (ball == 6) {
+            over += 1;
+            ball = 0;
+        }
+        if (wicket == w) {
+                printf("\nWicket ended.\n");
+            printf("\nInnings Ended\n");
+            //printf("Target : %d",run+1);
+            break;
+        }
+        if (over == o) {
+                printf("\nOver ended.\n");
+            printf("\nInnings Ended\n");
+            //printf("Target : %d",run+1);
+            break;
+        }
+        printLiveScore();
 
-                     if(pl3.max_six<pl1[i].sixes)
-                       {
-                        pl3.max_six=pl1[i].sixes;
-                       }
+    }
+    printLiveScore();
 
-                     if(pl3.max_four<pl1[i].fours)
-                       {
-                        pl3.max_four=pl1[i].fours;
-                       }
-
-                     if(pl4.max_w<pl2[i].wkttkn)
-                      {
-                      pl4.max_w=pl2[i].wkttkn;
-                      }
-                  }
-              printf("Highest runs scored by the batsman:%d\n",pl3.max_run);
-
-              printf("Maximum fours scored by the batsman:%d\n",pl3.max_four);
-
-              printf("Maximum sixes scored by the batsman%d:\n",pl3.max_six);
-
-             printf("Maximum wickets taken by the bowler:%d\n",pl4.max_w);
-
-             break;
-
-
-
-        case 5:
-            exit(1);
-
-        default:
-             printf("Enter the correct choice\n");
-             break;
-
-      }
-
-    }while(choice!=5);
-
-
-   return 0;
-
+    printf("\nTarget : %d",run+1);
 }
 
