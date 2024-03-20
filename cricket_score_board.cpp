@@ -25,12 +25,22 @@ void createHTML() {
     fclose(pFile);
 }
 
-void printLiveScore() {
-    printf("\nLive Score:\n");
-    printf("Score: %d / %d\n", run, wicket);
-    printf("Overs: %d.%d\n", over, ball);
 
+void printLiveScore() {
+    printf("Live Score:\n");
+    printf("+---------------------+\n");
+    printf("| Score: %2d / %-2d      |\n", run, wicket);
+     printf("+---------------------+\n");
+    printf("| Overs: %2d.%-2d        |\n", over, ball);
+    printf("+---------------------+\n");
 }
+
+// void printLiveScore() {
+    // printf("\nLive Score:\n");
+    // printf("Score: %d / %d\n", run, wicket);
+    // printf("Overs: %d.%d\n", over, ball);
+// 
+// }
 
 int main() {
     int score, w, o;
@@ -101,7 +111,7 @@ int main() {
                         break;
                     }
                     default:
-                        printf("\nDad Ball\n");
+                        printf("\nDead Ball\n");
                 }
                 break;
             }
@@ -133,15 +143,14 @@ int main() {
                         break;
                     }
                     default:
-                        printf("\nDad Ball\n");
+                        printf("\nDead Ball\n");
                 }
                 break;
             }
           case 3 : {
                 srand(time(NULL));
                 int random = (rand() % 4);
-
-                switch(random){
+switch(random){
                 case 0 : {
                 run +=3;
                 ball +=1;
@@ -167,7 +176,7 @@ int main() {
                 break;
                 }
                 default :
-                    printf("\nDad Ball\n");
+                    printf("\nDead Ball\n");
                 }
                 break;
             }
@@ -182,7 +191,7 @@ int main() {
                         break;
                     }
                     default:
-                        printf("\nDad Ball\n");
+                        printf("\nDead Ball\n");
                 }
                 break;
             }
@@ -202,7 +211,7 @@ int main() {
                         break;
                     }
                     default:
-                        printf("\nDad Ball\n");
+                        printf("\nDead Ball\n");
                 }
                 break;
             }
@@ -218,7 +227,7 @@ int main() {
                         break;
                     }
                     default:
-                        printf("\nDad Ball\n");
+                        printf("\nDead Ball\n");
                 }
                 break;
             }
@@ -233,7 +242,7 @@ int main() {
                         break;
                     }
                     default:
-                        printf("\nDad Ball\n");
+                        printf("\nDead Ball\n");
                 }
                 break;
             }
@@ -271,8 +280,7 @@ int main() {
         strcat(content, "\n");
 
         createHTML();
-
-        if (ball == 6) {
+if (ball == 6) {
             over += 1;
             ball = 0;
         }
@@ -289,6 +297,6 @@ int main() {
             break;
         }
        strcpy(content,"");
-      // system("cls");
+       //system("cls");
 }
 }
